@@ -30,7 +30,7 @@ class customAuth
         else if (($path=="Update") && (!(Session::get('user_email')))){
            return redirect('Paginatlogout');
         } 
-        if($path== "xlimport" || $path== "xlexport" || $path== "csvexport"){
+        if($path== "xlimport" || $path== "xlexport" || $path== "csvexport" || $path== "export-custom-xl"){
             return $next($request);
         } else {
             return $next($request)

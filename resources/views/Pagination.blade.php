@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -105,6 +106,8 @@
         <br>
         <br>
         <br>
+
+
         <h1>DATA FETCH FROM DATABASE</h1>
         <h1>Import Excel</h1>
         <form action="xlimport" method="POST" enctype="multipart/form-data" autocomplete="off">
@@ -201,11 +204,15 @@
             </button>
         </div>
         @endif
-
+ 
         <table border="1" width="100%" class="table table-striped table-dark">
             <thead>
                 <tr>
-                    <td colspan="5"></td>
+                    <td colspan="5">
+                        <a target="_blank" href='/createpdf'>Create Custom PDF</a>
+                        <a target="_blank" href='/export-custom-xl'>Costom Excel</a>
+                    </td>
+
                     <td colspan="1"><a href='/pdfexport'>Pdf Export</a></td>
                     <td colspan="1"><a href='/csvexport'>Csv Export</a></td>
                     <td colspan="1"><a href='/xlexport'>Excel Export</a></td>

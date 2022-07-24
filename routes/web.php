@@ -20,8 +20,8 @@ use App\Mail\SampleMail;
 use App\Http\controllers\apiAuthentication; 
 use App\Http\controllers\multiDatabase; 
 use App\Http\controllers\GetApidata; 
- 
-
+use App\Http\controllers\GeneratePdf; 
+use App\Http\controllers\ExportxlController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -103,7 +103,7 @@ Route::post("InsertData", [PaginationCon::class, 'addData']);
 Route::get("delete/{id}", [PaginationCon::class, 'Datadelete']);
 Route::get("edit/{id}", [PaginationCon::class, 'Dataedit']);
 Route::post("Update", [PaginationCon::class, 'Update']);
-   
+    
 Route::get("PaginationMrow", [PaginationCon::class, 'PaginationMrow']);
 Route::post("PaginationMrowInsert", [PaginationCon::class, 'multirowInsert']);
 Route::delete("/multidelete", [PaginationCon::class, 'multidelete'])->name('multidelete');
@@ -112,7 +112,7 @@ Route::post("/UpdateMultiDataview", [PaginationCon::class, 'updateMultiData'])->
 Route::get("viewPhotoPage", [PaginationCon::class, 'viewmultiPhotoPage']); 
 Route::post("uploadMultiFiles", [PaginationCon::class, 'InertmultiPhoto']);
 Route::get("getSelectids", [PaginationCon::class, 'getSelectids']);
-
+  
 //  guzzlehttp
 Route::get("apiget", [GetApidata::class, 'index']);
 Route::post("apiregister", [GetApidata::class, 'apiregister']);
@@ -125,7 +125,8 @@ Route::post("xlimport", [PaginationCon::class, 'importForm']);
 Route::get("xlexport", [PaginationCon::class, 'exportUsersXl']);
 Route::get("csvexport", [PaginationCon::class, 'exportUsersCSV']); 
 Route::get("pdfexport", [PaginationCon::class, 'exportUsersPDF']); 
- 
+Route::get("createpdf", [GeneratePdf::class, 'Crearepdf']); 
+Route::get("export-custom-xl", [ExportxlController::class, 'index']); 
 }); 
 
 
