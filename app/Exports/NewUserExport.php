@@ -51,7 +51,7 @@ class NewUserExport implements FromCollection, WithHeadings, WithEvents
      * Write code on Method
      *
      * @return response()
-     */
+     */ 
     public function registerEvents(): array
     {
         return [

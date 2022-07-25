@@ -14,7 +14,7 @@ class ExportxlController extends Controller
         ob_start(); // and this
         return Excel::download(new NewUserExport($users),'usersList.xlsx',\Maatwebsite\Excel\Excel::XLSX);
     } 
-
+ 
 
 
 }
