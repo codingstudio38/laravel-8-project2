@@ -6,6 +6,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Events\BeforeSheet;
 
 class NewUserExport implements FromCollection, WithHeadings, WithEvents
 {
@@ -28,10 +29,10 @@ class NewUserExport implements FromCollection, WithHeadings, WithEvents
      */
     public function collection()
     {
-        return $this->data;
-       //return collect($this->data);
+         //return $this->data;
+      return collect($this->data);
     }
-
+   
     /**
      * Write code on Method
      *
@@ -40,10 +41,10 @@ class NewUserExport implements FromCollection, WithHeadings, WithEvents
     public function headings(): array
     {
         return [
-            'id',
-            'name',
-            'email',
-            'address'
+            // 'id',
+            // 'name',
+            // 'email',
+            // 'address'
         ];
     }
 
@@ -97,6 +98,13 @@ class NewUserExport implements FromCollection, WithHeadings, WithEvents
                 $event->sheet->setCellValue('D3', "ADDRESS");
                 $i=4;
                 foreach($this->data as $key=>$val){
+                if(@$val->id=="123"){
+                   $event->sheet->getDelegate()->getStyle('A'.$i)
+                    ->getFill()
+                    ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                    ->getStartColor()
+                    ->setARGB('FFA500');
+                }
                 $event->sheet->setCellValue('A'.$i, @$val->id);
                 $event->sheet->setCellValue('B'.$i, @$val->name);
                 $event->sheet->setCellValue('C'.$i, @$val->email);
@@ -104,6 +112,23 @@ class NewUserExport implements FromCollection, WithHeadings, WithEvents
                 $i++;
                 }
             },
+            // BeforeExport::class  => function(BeforeExport $before_event) {
+            //     $x=4;
+            //     foreach($this->data as $key=>$val){
+            //     if(@$val->id=="123"){
+            //        $event->sheet->getDelegate()->getStyle('A'.$i)
+            //         ->getFill()
+            //         ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+            //         ->getStartColor()
+            //         ->setARGB('FFA500');
+            //     }
+            //     $before_event->sheet->setCellValue('A'.$x, @$val->id);
+            //     $before_event->sheet->setCellValue('B'.$x, @$val->name);
+            //     $before_event->sheet->setCellValue('C'.$x, @$val->email);
+            //     $before_event->sheet->setCellValue('D'.$x, @$val->address);
+            //     $i++;
+            //     }
+            // },
 
         ];
     }

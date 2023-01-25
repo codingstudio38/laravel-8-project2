@@ -8,7 +8,7 @@ if(!function_exists('counter')){
        return $user->count();
        
     }
-} else{
+} else {
  return 'function not exists..!!';
 }
 ///composer dump-autoload
